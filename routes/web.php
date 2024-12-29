@@ -12,6 +12,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\isAdmin as isAdmin;
 
 Route::get('/home', function () {
     return redirect('/dashboard');
@@ -29,14 +30,18 @@ Route::middleware('auth')->group(function () {
     Route::resources([
         'carts'=>CartController::class,
         'orders'=>POrderController::class,
+        'reviews'=>ReviewController::class,
+    ]);
+    Route::middleware(isAdmin::class)->group(function () {
+        Route::resources([
         'products'=>ProductController::class,
         'projects'=>ProjectController::class,
         'milestones'=>MilestoneController::class,
         'tasks'=>TaskController::class,
-        'reviews'=>ReviewController::class,
         'finances'=>FinanceController::class,
         'users'=>UserController::class
-    ]);
+        ]);
+    });
     Route::get('/dashboard', function () {
         return view('dashboard.index');
     });
