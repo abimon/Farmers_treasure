@@ -9,8 +9,8 @@
                 <div class="row g-4">
                     <div class="col-xl-3">
                         <div class="input-group w-100 mx-auto d-flex">
-                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
-                            <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
+                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-2">
+                            <span id="search-icon-2" class="input-group-text p-3"><i class="fa fa-search"></i></span>
                         </div>
                     </div>
                     <div class="col-6"></div>
@@ -18,10 +18,11 @@
                         <div class="bg-light ps-3 py-3 rounded d-flex justify-content-between mb-4">
                             <label for="fruits">Default Sorting:</label>
                             <select id="fruits" name="fruitlist" class="border-0 form-select-sm bg-light me-3" form="fruitform">
-                                <option value="volvo">Nothing</option>
-                                <option value="saab">Popularity</option>
-                                <option value="opel">Organic</option>
-                                <option value="audi">Fantastic</option>
+                                <option value="#!">All</option>
+                                <option value="Fruits">Fruits</option>
+                                <option value="Vegetables">Vegetables</option>
+                                <option value="Cereals">Cereals</option>
+                                <option value="Poutry">Poutry</option>
                             </select>
                         </div>
                     </div>
