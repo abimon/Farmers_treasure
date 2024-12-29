@@ -1,6 +1,6 @@
 @extends('layouts.dashboard',['title' => 'Index'])
 @section('dashboard')
-
+<div class="" style="min-height:80vh;">
 @if (Auth()->user()->isAdmin)
 <!-- Sale & Revenue Start -->
 <div class="container-fluid pt-4 px-4">
@@ -162,5 +162,5 @@
 </div>
 <!-- Recent Sales End -->
 @endif
-
+</div>
 @endsection
