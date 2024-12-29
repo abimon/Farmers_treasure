@@ -60,11 +60,13 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="/dashboard" class="nav-item nav-link {{request()->path()=='dashboard'?'active':''}}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    @if(Auth()->user()->isAdmin)
                     <a href="{{route('products.index')}}" class="nav-item nav-link {{request()->path()=='products'?'active':''}}"><i class="fa fa-th me-2"></i>Products</a>
-                    <a href="{{route('orders.index')}}" class="nav-item nav-link {{request()->path()=='orders'?'active':''}}"><i class="fa fa-table me-2"></i>Orders</a>
                     <a href="/projects" class="nav-item nav-link {{request()->path()=='projects'?'active':''}}"><i class="fa fa-keyboard me-2"></i>Projects</a>
                     <a href="{{route('finances.index')}}" class="nav-item nav-link {{request()->path()=='finances'?'active':''}}"><i class="fa fa-chart-bar me-2"></i>Finances</a>
                     <a href="/users" class="nav-item nav-link {{request()->path()=='users'?'active':''}}"><i class="fa fa-users me-2"></i>Users</a>
+                    @endif
+                    <a href="{{route('orders.index')}}" class="nav-item nav-link {{request()->path()=='orders'?'active':''}}"><i class="fa fa-table me-2"></i>Orders</a>
                 </div>
             </nav>
         </div>

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Order;
 use App\Models\POrder;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,7 +29,7 @@ class POrderController extends Controller
      */
     public function create()
     {
-        //
+        return view('checkout');
     }
 
     /**
@@ -35,9 +37,7 @@ class POrderController extends Controller
      */
     public function store()
     {
-        // try {
-        $user = Auth::user()->name;
-        $name = explode(" ", $user);
+        // dd(request());
         $cart = Cart::where('user_id', Auth::user()->id)->get();
         $receipt = strtoupper((uniqid()));
         foreach ($cart as $item) {
@@ -49,7 +49,16 @@ class POrderController extends Controller
             ]);
             Cart::destroy($item->id);
         }
-        return view('checkout', compact('name'))->with('success', 'Order placed successfully!');
+        Order::create([
+            'receipt_no'=>$receipt, 
+            'address'=>request('address'), 
+            'phone'=>request('phone'), 
+            'name'=>request('fname'),
+            'note'=>request('text'),
+            'email'=>request('email'),
+            'payment_mode'=>request('payment_mode')
+        ]);
+        return redirect()->route('orders.index', )->with('success', 'Order placed successfully!');
         // } catch (\Throwable $th) {
         //     // throw $th;
         //     return redirect()->route('orders.index')->with('error', 'An error occurred while placing the order!');
@@ -59,9 +68,10 @@ class POrderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(POrder $pOrder)
+    public function show($receipt)
     {
-        //
+        $orders = POrder::where('receipt_no', $receipt)->get();
+        return view('dashboard.orders.index', compact('orders'));
     }
 
     /**

@@ -18,7 +18,8 @@
                         <p class="mb-3">Category: {{$product->category}}</p>
                         <h5 class="fw-bold mb-3">Ksh. {{$product->price}} / {{$product->units}}</h5>
                         <div class="mb-4"><?php echo html_entity_decode($product->description) ?></div>
-                        <form action="{{route('carts.store')}}" method="post">
+                        <form action="{{route('carts.store',["product_id"=>$product->id])}}" method="post">
+                            @csrf
                             <div class="input-group quantity mb-5" style="width: 100px;">
                                 <div class="input-group-btn">
                                     <button class="btn btn-sm btn-minus rounded-circle bg-light border">

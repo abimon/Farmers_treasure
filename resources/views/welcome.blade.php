@@ -142,15 +142,15 @@
                                             <h4 class="text-center">{{$product->name}}</h4>
                                             <p class="text-dark fw-bold text-center mb-2">Ksh. {{$product->price}} / {{$product->units}}</p>
                                             <div class="d-flex justify-content-between">
-                                                <a href="/product/{{$product->id}}" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-eye text-primary"></i> View</a>
-                                                <form action="{{route('carts.store',$product->id)}}" method="post">
-                                                    @csrf
-                                                    <input type="hidden" name="quantity" value="1">
-                                                    <button type="submit" class="btn border border-secondary rounded-pill px-3 text-primary">
-                                                        <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
-                                                    </button>
-                                                </form>
-                                            </div>
+                                            <a href="/product/{{$product->id}}" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-eye text-primary"></i> View</a>
+                                            <form action="{{route('carts.store',['product_id'=>$product->id])}}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="quantity" value="1">
+                                                <button type="submit" class="btn border border-secondary rounded-pill px-3 text-primary">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </button>
+                                            </form>
+                                        </div>
                                         </div>
                                     </div>
                                 </div>

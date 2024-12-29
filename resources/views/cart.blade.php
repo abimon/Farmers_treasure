@@ -8,6 +8,7 @@
 
         <div class="row g-4 justify-content-end">
             <div class="col-8">
+                @if($products->count() > 0)
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -25,14 +26,14 @@
                             <tr>
                                 <th scope="row">
                                     <div class="d-flex align-items-center">
-                                        <img src="/{{$cart->item->cover}}" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
+                                        <img src="/{{$cart->product->cover}}" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
                                     </div>
                                 </th>
                                 <td>
-                                    <p class="mb-0 mt-4">{{$cart->item->name}}</p>
+                                    <p class="mb-0 mt-4">{{$cart->product->name}}</p>
                                 </td>
                                 <td>
-                                    <p class="mb-0 mt-4">{{$cart->item->price}}</p>
+                                    <p class="mb-0 mt-4">{{$cart->product->price}}</p>
                                 </td>
                                 <td>
                                     <div class="input-group quantity mt-4" style="width: 100px;">
@@ -50,7 +51,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <p class="mb-0 mt-4">{{($cart->item->price)*($cart->quantity)}}</p>
+                                    <p class="mb-0 mt-4">{{($cart->product->price)*($cart->quantity)}}</p>
                                 </td>
                                 <td>
                                     <button class="btn btn-md rounded-circle bg-light border mt-4">
@@ -63,6 +64,7 @@
                         </tbody>
                     </table>
                 </div>
+                @endif
             </div>
             <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
                 <div class="bg-light rounded">
@@ -88,12 +90,14 @@
                         <h5 class="mb-0 ps-4 me-4">Total</h5>
                         <p class="mb-0 pe-4 fw-bold text-primary">Ksh. {{$sum+250}}</p>
                     </div>
-                    <form action="{{route('orders.store')}}" method="post">
+                    @if($products->count() > 0)
+                    <form action="{{route('orders.create')}}" method="get">
                         @csrf
                         <div class="modal-footer">
-                        <button class="btn border-secondary rounded-pill px-3 py-2 text-primary text-uppercase mb-4 ms-4" type="submit">Proceed Checkout</button>
+                            <button class="btn border-secondary rounded-pill px-3 py-2 text-primary text-uppercase mb-4 ms-4" type="submit">Proceed Checkout</button>
                         </div>
                     </form>
+                    @endif
                 </div>
             </div>
         </div>
