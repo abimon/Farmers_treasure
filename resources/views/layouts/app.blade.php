@@ -47,9 +47,9 @@
                     <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">info@farmerstreasure.co.ke</a></small>
                 </div>
                 <div class="top-link pe-2">
-                    <a href="/privacy" class="text-white"><small class="text-white mx-2">Privacy Policy</small>/</a>
-                    <a href="/terms" class="text-white"><small class="text-white mx-2">Terms of Use</small>/</a>
-                    <a href="/refund" class="text-white"><small class="text-white ms-2">Sales and Refunds</small></a>
+                    <a href="" class="text-white"><small class="text-white mx-2">Privacy Policy</small>/</a>
+                    <a href="" class="text-white"><small class="text-white mx-2">Terms of Use</small>/</a>
+                    <a href="" class="text-white"><small class="text-white ms-2">Sales and Refunds</small></a>
                 </div>
             </div>
         </div>
@@ -176,22 +176,19 @@
                         <a class="btn-link" href="">FAQs & Help</a>
                     </div>
                 </div> -->
-
                 <div class="col-md-4">
                     <div class="footer-item">
                         <h4 class="text-light mb-3">Contact</h4>
                         <p>Email: info@farmerstreasure.co.ke</p>
                         <p>Phone: +254 728 886 217</p>
-                        <!-- <p>Payment Accepted</p>
-                        <img src="/storage/front/img/payment.png" class="img-fluid" alt=""> -->
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="d-flex flex-column text-start footer-item">
                         <h4 class="text-light mb-3">Account</h4>
                         <a class="btn-link" href="/dashboard">My Account</a>
-                        <a class="btn-link" href="/">Shop details</a>
-                        <a class="btn-link" href="/cart">Shopping Cart</a>
+                        <a class="btn-link" href="/shop">Shop details</a>
+                        <a class="btn-link" href="/carts">Shopping Cart</a>
                     </div>
                 </div>
             </div>
