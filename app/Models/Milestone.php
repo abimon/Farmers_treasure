@@ -15,7 +15,9 @@ class Milestone extends Model
         "expected_completion_date",
         "actual_completion_date",
         "created_by",
-        "budget"
+        "budget",
+        "start_date",
+        "assignedto"
     ];
 
     public function project(){
@@ -23,5 +25,8 @@ class Milestone extends Model
     }
     public function user(){
         return $this->belongsTo(User::class, "created_by",'id');
+    }
+    public function to(){
+        return $this->belongsTo(User::class, "assignedto",'id');
     }
 }

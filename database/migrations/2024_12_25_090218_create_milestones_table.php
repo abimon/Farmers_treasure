@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('milestones', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('project_id');
+            $table->unsignedBigInteger('assignedto');
             $table->string('title');
             $table->text('description');
             $table->string("progress")->nullable();
+            $table->date("start_date")->nullable();
             $table->date("expected_completion_date")->nullable();
             $table->date("actual_completion_date")->nullable();
             $table->unsignedBigInteger("created_by")->nullable();
@@ -24,6 +26,7 @@ return new class extends Migration
             $table->timestamps();
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
             $table->foreign("created_by")->references('id')->on('users')->cascadeOnDelete();
+            $table->foreign("assignedto")->references('id')->on('users');
         });
     }
 

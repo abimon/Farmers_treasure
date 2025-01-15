@@ -31,6 +31,7 @@
                             <select class="form-select" id="type" name="type">
                                 <option value="revenue">Revenue</option>
                                 <option value="expense">Expense</option>
+                                <option value="sale">Sales</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -57,6 +58,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Date</th>
                     <th scope="col">Project</th>
+                    <th scope="col">Sales</th>
                     <th scope="col">Revenue</th>
                     <th scope="col">Expense</th>
                     <th scope="col">Logged By</th>
@@ -69,12 +71,18 @@
                     <td>{{$loop->index+1}}</td>
                     <td>{{date_format($record->created_at,'jS F, Y')}}</td>
                     <td>{{$record->project->name}}</td>
-                    @if ($record->type=='expense')
+                    @if ($record->type=='sale')
+                    <td>{{$record->amount}}</td>
+                    <td></td>
+                    <td></td>
+                    @elseif($record->type=='revenue')
                     <td></td>
                     <td>{{$record->amount}}</td>
+                    <td></td>
                     @else
-                    <td>{{$record->amount}}</td>
                     <td></td>
+                    <td></td>
+                    <td>{{$record->amount}}</td>
                     @endif
                     <td>{{$record->user->name}}</td>
                     <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
@@ -83,6 +91,7 @@
                 <?php 
                     $rev=$records->where('type','revenue')->sum('amount');
                     $exp=$records->where('type','expense')->sum('amount');
+                    $sales=$records->where('type','sale')->sum('amount');
                     $balance=$rev-$exp;
                     ?>
                 <tr style="color:black; font-weight:bold;">

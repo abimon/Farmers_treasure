@@ -2,7 +2,7 @@
 @section('dashboard')
 <div class="container mt-3" style="min-height:80vh;">
     <div class="d-flex justify-content-between mb-2">
-        <h4>Products</h4>
+        <h4>Projects</h4>
         <button href="#" data-bs-toggle="modal" data-bs-target="#addProjects" class="btn btn-primary">Add New Project</button>
     </div>
 

@@ -39,7 +39,9 @@ class MilestoneController extends Controller
             "title"=>request("title"),
             "description"=>request("description"),
             "progress"=>0,
+            "assignedto"=>request("assignedto"),
             "expected_completion_date"=>request("expected_completion_date"),
+            "start_date"=>request("start_date"),
             "created_by"=>Auth::user()->id,
             "budget"=>request("budget"),
         ]);
@@ -80,11 +82,17 @@ class MilestoneController extends Controller
         if(request('expected_completion_date')!=null){
             $project->expected_completion_date=request('expected_completion_date');
         }
+        if(request('start_date')!=null){
+            $project->start_date=request('start_date');
+        }
         if(request('actual_completion_date')!=null){
             $project->actual_completion_date=request('actual_completion_date');
         }
         if(request('budget')!=null){
             $project->budget=request('budget');
+        }
+        if(request('assignedto')!=null){
+            $project->assignedto=request('assignedto');
         }
         $project->update();
         return back()->with('success','Milestone updated successfully.');
