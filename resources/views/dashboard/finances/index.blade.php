@@ -70,7 +70,7 @@
                 <tr>
                     <td>{{$loop->index+1}}</td>
                     <td>{{date_format($record->created_at,'jS F, Y')}}</td>
-                    <td>{{$record->project->name}}</td>
+                    <td>{{$record->description}}</td>
                     @if ($record->type=='sale')
                     <td>{{$record->amount}}</td>
                     <td></td>
@@ -94,7 +94,11 @@
                                 <h5 class="modal-title" id="addRecordLabel">Details</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body"></div>
+                            <div class="modal-body">
+                                <p><b>Project:</b> {{$record->project->name}}</p>
+                                <p>{{$record->description}}</p>
+                                <p><b>{{$record->amount}}</b></p>
+                            </div>
                         </div>
                     </div>
                 </div>

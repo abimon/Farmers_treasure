@@ -32,12 +32,19 @@
                         </div>
                         <div class="mb-3">
                             <label for="expected_completion_date" class="form-label">Start Date</label>
-                            <input type="date" class="form-control" id="start_date" min="{{date('Y-m-d')}}" max="{{date_format(date_create($project->deadline),'Y-m-d')}}" name="start_date" required>
+                            <input type="date" class="form-control" id="start_date" min="{{date('d/m/Y')}}" max="{{date_format(date_create($project->deadline),'d/m/Y')}}" name="start_date" required>
                         </div>
                         <div class="mb-3">
                             <label for="expected_completion_date" class="form-label">Deadline</label>
-                            <input type="date" class="form-control" id="expected_completion_date" min="{{date('Y-m-d')}}" max="{{date_format(date_create($project->deadline),'Y-m-d')}}" name="expected_completion_date" required>
+                            <input type="date" class="form-control" id="expected_completion_date" min="{{date('d/m/Y')}}" max="{{date_format(date_create($project->deadline),'d/m/Y')}}" name="expected_completion_date" required>
                         </div>
+                        <script>
+                            function setExpe(){
+                                var start = new Date(document.getElementById('start_date').value);
+                                var end = document.getElementById('expected_completion_date');
+                                end.setAttribute('max', date_format(start,'d/m/Y'));
+                            }
+                        </script>
                         <div class="mb-3">
                             <label for="budget" class="form-label">Budgeted Amount(Kshs)</label>
                             <input type="number" class="form-control" id="budget" name="budget" required>
