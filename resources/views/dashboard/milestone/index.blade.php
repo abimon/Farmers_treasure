@@ -45,7 +45,7 @@
                         <div class="mb-3">
                             <label for="">Assign to</label>
                             <select name="assignedto" id="" class="form-select">
-                                @foreach (App\Models\User::where('isAdmin',true)->select('name','id') as $user)
+                                @foreach (App\Models\User::where('isAdmin',true)->select('name','id')->get() as $user)
                                     <option value="{{$user->id }}">{{ $user->name }}</option>
                                 @endforeach
                             </select>

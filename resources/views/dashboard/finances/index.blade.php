@@ -85,15 +85,26 @@
                     <td>{{$record->amount}}</td>
                     @endif
                     <td>{{$record->user->name}}</td>
-                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                    <td><a class="btn btn-sm btn-primary" href="" data-bs-toggle="modal" data-bs-target="#Record{{$record->id}}">Detail</a></td>
                 </tr>
+                <div class="modal fade" id="Record{{$record->id}}" tabindex="-1" aria-labelledby="addRecordLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addRecordLabel">Details</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body"></div>
+                        </div>
+                    </div>
+                </div>
                 @endforeach
-                <?php 
-                    $rev=$records->where('type','revenue')->sum('amount');
-                    $exp=$records->where('type','expense')->sum('amount');
-                    $sales=$records->where('type','sale')->sum('amount');
-                    $balance=$rev-$exp;
-                    ?>
+                <?php
+                $rev = $records->where('type', 'revenue')->sum('amount');
+                $exp = $records->where('type', 'expense')->sum('amount');
+                $sales = $records->where('type', 'sale')->sum('amount');
+                $balance = $rev - $exp;
+                ?>
                 <tr style="color:black; font-weight:bold;">
                     <td></td>
                     <td colspan="4"></td>
