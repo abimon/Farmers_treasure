@@ -96,8 +96,12 @@
                             </div>
                             <div class="modal-body">
                                 <p><b>Project:</b> {{$record->project->name}}</p>
-                                <p>{{$record->description}}</p>
-                                <p><b>{{$record->amount}}</b></p>
+                                <p><b>Type:</b> @if($record->type=='sale') Sale @elseif($record->type=='revenue') Revenue @else Expense @endif</p>
+                                <p><b>Description:</b> {{$record->description}}</p>
+                                <p><b>Amount: Ksh. {{$record->amount}}</b></p>
+                                <p><b>Logged By:</b> {{$record->user->name}}</p>
+                                <p><b>Logged At:</b> {{date_format($record->created_at,'jS F, Y')}}</p>
+
                             </div>
                         </div>
                     </div>
