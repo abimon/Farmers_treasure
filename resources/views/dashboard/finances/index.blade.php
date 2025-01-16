@@ -101,7 +101,11 @@
                                 <p><b>Amount: Ksh. {{$record->amount}}</b></p>
                                 <p><b>Logged By:</b> {{$record->user->name}}</p>
                                 <p><b>Logged At:</b> {{date_format($record->created_at,'jS F, Y')}}</p>
-
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                
+                                <button type="button" class="btn btn-danger" href="{{route('finances.destroy', $record->id)}}" onclick="return confirm('Are you sure you want to delete this record?')">Delete</button>
                             </div>
                         </div>
                     </div>
